@@ -11,7 +11,7 @@ class List extends React.Component{
     render(){
         return(
             <div>
-                {this.state.items.length > 0  ? (   
+                {this.props.item? (   
                     this.state.items.map(item => {
                         return (
                             <li>{item}</li>

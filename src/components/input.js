@@ -1,5 +1,5 @@
 import React from 'react'
-import List from './list';
+// import List from './list';
 
 class Input extends React.Component {
     constructor() {
@@ -7,31 +7,49 @@ class Input extends React.Component {
         this.state = {
             input: '',
             item: [],
-            name : ''
+            // value: ''
         }
     }
 
+    handleSubmit = (e) => {
+        e.preventDefault()
+        this.setState({
+            input: '',
+            item: [...this.state.item, this.state.input]
+        })
+    }
+
     handleChange = e => {
-        this.setState({ [e.target.name]: e.target.value })
+        e.preventDefault()
+        this.setState({ input: e.target.value })
     }
-
-    handleSubmit = () => {
-        const items = this.state.item.push(this.state.name)
-        return items;
-
-    }
-
 
     render() {
-        console.log(this.state.item)
         return (
             <div>
-                <input type="text" name="name" onChange={this.handleChange} />
+                <input type="text" name="name"
+                    value={this.state.input}
+
+                    onChange={this.handleChange}
+                />
                 <button onClick={this.handleSubmit} >Add</button>
-                <List item={this.state.item} />
+                <div>
+                    {this.state.item.map(item => {
+                        return (
+                            <div>
+                                {item}
+                            </div>
+                        )
+                    }
+                    )}
+                </div>
             </div>
         )
     }
 }
 
 export default Input;
+
+// onChange={e =>
+//     this.setState({ value: e.target.value })
+// } />
