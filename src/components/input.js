@@ -7,7 +7,6 @@ class Input extends React.Component {
         this.state = {
             input: '',
             item: [],
-            // value: ''
         }
     }
 
@@ -29,7 +28,6 @@ class Input extends React.Component {
             <div>
                 <input type="text" name="name"
                     value={this.state.input}
-
                     onChange={this.handleChange}
                 />
                 <button onClick={this.handleSubmit} >Add</button>
@@ -49,7 +47,3 @@ class Input extends React.Component {
 }
 
 export default Input;
-
-// onChange={e =>
-//     this.setState({ value: e.target.value })
-// } />
