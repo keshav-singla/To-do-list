@@ -24,13 +24,13 @@ class Input extends React.Component {
     }
 
     render() {
-        return (
+        return (            
             <div>
                 <input type="text" name="name"
                     value={this.state.input}
                     onChange={this.handleChange}
                 />
-                <button onClick={this.handleSubmit} >Add</button>
+                <button className='button' onClick={this.handleSubmit} >Add</button>
                 <div>
                     {this.state.item.map(item => {
                         return (
