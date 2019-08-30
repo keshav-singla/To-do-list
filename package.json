@@ -7,7 +7,9 @@
     "react": "^16.9.0",
     "react-dev-utils": "^9.0.3",
     "react-dom": "^16.9.0",
-    "sass": "^1.22.10"
+    "react-icons": "^3.7.0",
+    "sass": "^1.22.10",
+    "semantic-ui-react": "^0.88.0"
   },
   "scripts": {
     "start": "react-scripts start",

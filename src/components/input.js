@@ -1,5 +1,6 @@
 import React from 'react'
-// import List from './list';
+import {Icon} from 'semantic-ui-react'
+import List from './list';
 
 class Input extends React.Component {
     constructor() {
@@ -26,20 +27,13 @@ class Input extends React.Component {
     render() {
         return (            
             <div>
-                <input type="text" name="name"
+                <input className='inputFeild' type="text" name="name"
                     value={this.state.input}
                     onChange={this.handleChange}
                 />
-                <button className='button' onClick={this.handleSubmit} >Add</button>
+                <button className='button' onClick={this.handleSubmit} ><Icon name='add' color='grey'/> Add </button>
                 <div>
-                    {this.state.item.map(item => {
-                        return (
-                            <div>
-                                {item}
-                            </div>
-                        )
-                    }
-                    )}
+                    <List items={this.state.item} />
                 </div>
             </div>
         )

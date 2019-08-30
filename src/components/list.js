@@ -1,23 +1,23 @@
 import React from 'react'
 
-class List extends React.Component{
-    constructor(props){
+class List extends React.Component {
+    constructor(props) {
         super(props)
-        this.state={
-            items : props.item
+        this.state = {
+
         }
     }
-    
-    render(){
-        return(
+
+    render() {
+        return (
             <div>
-                {this.props.item? (   
-                    this.state.items.map(item => {
-                        return (
-                            <li>{item}</li>
-                        )
-                    })
-                ): "Add TODO"}
+                {this.props.items.map(item => {
+                    return (
+                        <div>
+                            {item}
+                        </div>
+                    )
+                })}
             </div>
         )
     }
