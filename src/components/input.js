@@ -1,5 +1,5 @@
 import React from 'react'
-import {Icon} from 'semantic-ui-react'
+// import { Icon } from 'semantic-ui-react'
 import List from './list';
 
 class Input extends React.Component {
@@ -25,16 +25,19 @@ class Input extends React.Component {
     }
 
     render() {
-        return (            
-            <div>
-                <input className='inputFeild' type="text" name="name"
+        return (
+            <div className='container'>
+                <div className='inputContainer'>
+                    <input className='inputFeild' type="text" name="name"
+                    placeholder= 'Add Task'
                     value={this.state.input}
                     onChange={this.handleChange}
                 />
-                <button className='button' onClick={this.handleSubmit} ><Icon name='add' color='grey'/> Add </button>
-                <div>
-                    <List items={this.state.item} />
+                 <button className='addButton' onClick={this.handleSubmit} >+</button>
+                 
                 </div>
+                <List items={this.state.item} />
+                   
             </div>
         )
     }

@@ -1,5 +1,11 @@
-$roundButton: 50%;
 
-.button{
-    border-radius: $roundButton;
+@mixin button ($radius, $color) {
+    border-radius: $radius;
+    border: 2px solid $color;
+    color: $color;
+    padding: 6px 20px;
+}
+
+.addButton{
+    @include button(6px, rgb(129, 199, 23));
 }

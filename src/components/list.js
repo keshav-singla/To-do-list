@@ -10,14 +10,14 @@ class List extends React.Component {
 
     render() {
         return (
-            <div>
-                {this.props.items.map(item => {
-                    return (
-                        <div>
-                            {item}
-                        </div>
-                    )
-                })}
+            <div className='listContainer' >
+                        {this.props.items.map(item => {
+                            return (
+                                <div >
+                                    {item}
+                                </div>
+                            )
+                        })}
             </div>
         )
     }
