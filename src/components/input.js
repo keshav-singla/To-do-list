@@ -1,5 +1,4 @@
 import React from 'react'
-// import { Icon } from 'semantic-ui-react'
 import List from './list';
 
 class Input extends React.Component {
