@@ -18,19 +18,23 @@ class Input extends React.Component {
         })
     }
 
-    handleChange = e => {
+    handleChange = (e) => {
         e.preventDefault()
-        this.setState({ input: e.target.value })
+        this.setState({ [e.target.name]: e.target.value })
     }
 
     render() {
         return (
             <div className='container'>
                 <div className='inputContainer'>
-                    <input className='inputFeild' type="text" name="name"
+                    <input 
+                    className='inputFeild'  
+                    type="text" 
+                    name= "input"
                     placeholder= 'Add Task'
                     value={this.state.input}
                     onChange={this.handleChange}
+                    autoComplete = 'off'
                 />
                  <button className='addButton' onClick={this.handleSubmit} >+</button>
                  
