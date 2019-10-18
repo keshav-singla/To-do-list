@@ -10,13 +10,13 @@ class Input extends React.Component {
         }
     }
 
-    handleSubmit = (e) => {
-        e.preventDefault()
-        this.setState({
-            input: '',
-            item: [...this.state.item, this.state.input]
-        })
-    }
+    // handleSubmit = (e) => {
+    //     e.preventDefault()
+    //     this.setState({
+    //         input: '',
+    //         item: [...this.state.item, this.state.input]
+    //     })
+    // }
 
     handleChange = (e) => {
         e.preventDefault()
@@ -36,10 +36,15 @@ class Input extends React.Component {
                     onChange={this.handleChange}
                     autoComplete = 'off'
                 />
-                 <button className='addButton' onClick={this.handleSubmit} >+</button>
+                 <button 
+                    className='addButton' 
+                    // onClick={this.handleSubmit} 
+                >
+                    +
+                </button>
                  
                 </div>
-                <List items={this.state.item} />
+                {/* <List items={this.state.item} /> */}
                    
             </div>
         )
