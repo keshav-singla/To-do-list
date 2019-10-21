@@ -1,5 +1,9 @@
 import React from 'react'
-import List from './list';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { addTask } from '../actions/addtask';
+import List from './list'
+import Task from './task'
 
 class Input extends React.Component {
     constructor() {
@@ -10,45 +14,48 @@ class Input extends React.Component {
         }
     }
 
-    // handleSubmit = (e) => {
+    // handleChange = (e) => {
     //     e.preventDefault()
-    //     this.setState({
-    //         input: '',
-    //         item: [...this.state.item, this.state.input]
-    //     })
+    //     this.setState({ [e.target.name]: e.target.value })
     // }
 
-    handleChange = (e) => {
-        e.preventDefault()
-        this.setState({ [e.target.name]: e.target.value })
+    handleSubmit = () => {
+        this.props.addTask(this.refs.tasks.value)
     }
 
     render() {
-        return (
+        return (           
             <div className='container'>
                 <div className='inputContainer'>
                     <input 
                     className='inputFeild'  
-                    type="text" 
-                    name= "input"
+                    type="text"
+                    refs = 'tasks'
+                    // name= "input"
                     placeholder= 'Add Task'
-                    value={this.state.input}
-                    onChange={this.handleChange}
-                    autoComplete = 'off'
+                    // value={this.state.input}
+                    // onChange={this.handleChange}
+                    // autoComplete = 'off'
                 />
-                 <button 
+
+                <button 
                     className='addButton' 
-                    // onClick={this.handleSubmit} 
+                    onClick={() => this.handleSubmit} 
                 >
                     +
                 </button>
                  
                 </div>
-                {/* <List items={this.state.item} /> */}
-                   
+                <List />
+                <Task />
             </div>
         )
     }
 }
 
-export default Input;
+function mapDisptachToProps(dispatch){
+    
+    return bindActionCreators({addTask}, dispatch)                 
+}
+
+export default connect( () => {} , mapDisptachToProps) (Input);

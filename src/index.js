@@ -5,13 +5,17 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import './styles/styles.scss'
 import { Provider } from 'react-redux'
-import { createStore } from 'redux';
+import { createStore , applyMiddleware, compose } from 'redux';
 import reducers from './reducers/index'
+import thunk from 'redux-thunk'
 
-const store = createStore(reducers)
-
-// import 'semantic-ui-css/semantic.min.css'
-
+const middleware = [thunk];
+const store = createStore(
+    reducers,
+    compose(
+        applyMiddleware(...middleware)
+      )
+    )
 
 ReactDOM.render( <Provider store ={store}>  <App /> </Provider>, document.getElementById('root'));
 

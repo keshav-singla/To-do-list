@@ -11,8 +11,10 @@ const taskreducer = (state= [] , action) => {
             state= state.slice();
             state.splice(action.payload,1);
             break;
+
+        default:
+            return state;
     }
-    return state;
 },
 
 reducers = combineReducers({ tasks:taskreducer })

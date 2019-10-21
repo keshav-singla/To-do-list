@@ -1,26 +1,53 @@
 import React from 'react'
+import {connect } from 'react-redux'
+import Task from './task'
 
 class List extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-
+            tasks : props.tasks
         }
     }
-
+    
     render() {
+        console.log(this.props);
+        const {tasks} = this.state;
+
         return (
-            <div className='listContainer' >
-                        {this.props.items.map(item => {
-                            return (
-                                <div >
-                                    {item}
-                                </div>
-                            )
-                        })}
-            </div>
+            <table>
+                <tr>
+                    <th>
+                        Tasks
+                    </th>
+                    <th>
+                        Actions
+                    </th>
+                </tr>
+            </table>
+
+            // <div 
+            //      className='listContainer'
+            //  >
+            //         { tasks > 0 && tasks.map((task , item) => {
+            //             return (
+            //                 <div>
+            //                     <Task
+            //                         key = {item}
+            //                         task = {task}
+            //                     />
+            //                 </div>
+            //             )
+            //         })}
+            // </div>
         )
     }
 }
 
-export default List;
+function mapStateToProps (state) {
+    return {
+        task: state.tasks
+    }
+}
+
+export default connect(mapStateToProps) (List);
