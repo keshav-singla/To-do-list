@@ -1,16 +1,17 @@
 import {combineReducers} from 'redux'
 
 const taskreducer = (state= [] , action) => {
+    console.log(action);
     
     switch(action.type){
         case 'ADDTASK':
-            state = state.concat(action.payload);
-            break;
+            // state = state.concat(action.payload);
+            // return action.payload;
+            return state.concat(action.payload);
         
         case 'DELETETASK':
-            state= state.slice();
-            state.splice(action.payload,1);
-            break;
+            // state= state.slice();
+            return state.splice(action.payload,1);
 
         default:
             return state;

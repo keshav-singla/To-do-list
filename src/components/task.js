@@ -11,7 +11,13 @@ class Task extends React.Component{
         }
     }
 
+    handleDelete = () => {
+        this.props.deleteTask(this.props.id )
+    }
+
     render(){
+        console.log(this.props.task);
+        
         return( 
             <tr>
                 <td>
@@ -19,7 +25,7 @@ class Task extends React.Component{
                 </td>
                 <td>
                     <button
-                        onClick = { ()=> {this.props.deleteTask(this.props.id )} }
+                        onClick = { ()=> this.handleDelete }
                     >
                         Delete
                     </button>

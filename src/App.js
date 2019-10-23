@@ -1,13 +1,11 @@
 import React from 'react';
 import './App.css';
-import Input from './components/input';
-import List from './components/list';
-import Task from './components/task'
+import Taskbar from './components/input';
 
 function App() {
   return (
     <div className="app">
-      <Input />
+      <Taskbar />
       {/* <List />
       <Task /> */}
     </div>
