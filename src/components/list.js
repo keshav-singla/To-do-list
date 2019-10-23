@@ -19,12 +19,11 @@ class List extends React.Component {
     // }
 
     render() {
-        console.log(this.props.task);       
+        console.log(this.props.task);
         return (
-            <div>
-                <table>
-                    <thead>
-                        <tr>
+            <table>
+                <thead>
+                    <tr>
                         <th>
                             Tasks
                         </th>
@@ -32,40 +31,26 @@ class List extends React.Component {
                             Actions
                         </th>
                     </tr>
-                    </thead>
-                    <tbody>
-                        {this.props.task.length >= 0 && this.props.task.map( (task,index) => {
-                            return(
-                                <div>
-                                    <p>
-                                        {task}
-                                    </p>
-                                </div>
-                            )
-                        }
-                            // <Task
-                            // key= {index}
-                            // task = {task}
-                            // />
-                        )}
-                    </tbody>
-                </table>
-
-                {/* <div
-                    className='listContainer'
-                >
-                    {this.props.tasks > 0 && this.props.tasks.map((task, item) => {
+                </thead>
+                <tbody>
+                    {this.props.task.length >= 0 && this.props.task.map((task, index) => {
                         return (
-                            <div>
-                                <Task
-                                    key={item}
-                                    task={task}
-                                />
-                            </div>
+                            <Task
+                                key = {index}
+                                task = {task}
+                            />
                         )
-                    })}
-                </div> */}
-            </div>
+                    }
+                        // <Task
+                        // key= {index}
+                        // task = {task}
+                        // />
+                    )}
+                </tbody>
+            </table>
+
+
+
         )
     }
 }
@@ -77,3 +62,17 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps)(List);
+// {/* <div
+                //     className='listContainer'
+                // >
+                //     {this.props.tasks > 0 && this.props.tasks.map((task, item) => {
+                //         return (
+                //             <div>
+                //                 <Task
+                //                     key={item}
+                //                     task={task}
+                //                 />
+                //             </div>
+                //         )
+                //     })}
+                // </div> */}

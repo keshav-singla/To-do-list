@@ -45,7 +45,7 @@ class Taskbar extends React.Component {
                  
                 </div>
                 <List />
-                <Task />
+                {/* <Task /> */}
             </div>
         )
     }
