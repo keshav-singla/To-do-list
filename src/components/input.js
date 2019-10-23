@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { addTask } from '../actions/addtask';
 import List from './list'
-import Task from './task'
 
 class Taskbar extends React.Component {
     constructor() {
@@ -19,9 +18,12 @@ class Taskbar extends React.Component {
         this.setState({ [e.target.name]: e.target.value })
     }
 
-    // handleSubmit = () => {
-    //     this.props.addTask(this.state.input)
-    // }
+    handleSubmit = (data) => {
+        this.props.addTask(data)
+        this.setState({
+            input: []
+        })
+    }
 
     render() {
         return (           
@@ -38,14 +40,13 @@ class Taskbar extends React.Component {
 
                 <button 
                     className='addButton' 
-                    onClick={() => {this.props.addTask(this.state.input)}} 
+                    onClick={() => {this.handleSubmit(this.state.input)}} 
                 >
                     +
                 </button>
                  
                 </div>
                 <List />
-                {/* <Task /> */}
             </div>
         )
     }
