@@ -11,21 +11,20 @@ class Task extends React.Component{
         }
     }
 
-    handleDelete = () => {
-        this.props.deleteTask(this.props.id )
+    handleDelete = (delData) => {
+        this.props.deleteTask(delData)
     }
 
     render(){
-        console.log(this.props.task);   
+        console.log(this.props.task);
+        console.log('Hello');
         return( 
             <tr>
                 <td>
                     {this.props.task}
                 </td>
                 <td>
-                    <button
-                        onClick = { ()=> this.handleDelete }
-                    >
+                    <button onClick = { ()=> this.handleDelete(this.props.key)} >
                         Delete
                     </button>
                 </td>
@@ -38,4 +37,4 @@ function mapDispatchToProps (dispatch) {
     return bindActionCreators({deleteTask}, dispatch)
 }
 
-export default connect( () => {return {};},mapDispatchToProps ) (Task);
+export default connect( () => {return {};},mapDispatchToProps)(Task);

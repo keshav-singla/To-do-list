@@ -10,12 +10,14 @@ import reducers from './reducers/index'
 import thunk from 'redux-thunk'
 
 const middleware = [thunk];
+
+// CREATING STORE
 const store = createStore(
-    reducers,
-    compose(
-        applyMiddleware(...middleware)
-      )
-    )
+  reducers,
+  compose(
+    applyMiddleware(...middleware)
+  )
+)
 
 ReactDOM.render( <Provider store ={store}>  <App /> </Provider>, document.getElementById('root'));
 

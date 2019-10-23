@@ -10,14 +10,6 @@ class List extends React.Component {
         }
     }
 
-    // componentWillReceiveProps(prevProps, nextProps) {
-    //     if (this.props.location.state !== nextProps.location.state) {
-    //         this.setState({
-    //             list: nextProps.location.state
-    //         })
-    //     }
-    // }
-
     render() {
         console.log(this.props.task);
         return (
@@ -43,9 +35,6 @@ class List extends React.Component {
                     })}
                 </tbody>
             </table>
-
-
-
         )
     }
 }

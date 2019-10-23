@@ -26,17 +26,18 @@ class Taskbar extends React.Component {
     }
 
     render() {
-        return (           
+        return (
             <div className='container'>
                 <div className='inputContainer'>
-                    <input className='inputFeild'  type="text" 
+                    <input className='inputFeild'
+                    type="text" 
                     // refs = 'tasks' 
                     placeholder= 'Add Task'
                     name= "input"
                     value={this.state.input}
                     onChange={this.handleChange}
                     autoComplete = 'off'
-                />
+                    />
 
                 <button 
                     className='addButton' 
@@ -56,4 +57,4 @@ function mapDisptachToProps(dispatch){
     return bindActionCreators({addTask}, dispatch)                 
 }
 
-export default connect( () => {} , mapDisptachToProps) (Taskbar);
+export default connect( () => {}, mapDisptachToProps) (Taskbar);
