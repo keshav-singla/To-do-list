@@ -11,7 +11,7 @@ import thunk from 'redux-thunk'
 
 const middleware = [thunk];
 
-// CREATING STORE
+// CREATING STORE in redux
 const store = createStore(
   reducers,
   compose(

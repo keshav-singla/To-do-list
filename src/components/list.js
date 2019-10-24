@@ -25,7 +25,7 @@ class List extends React.Component {
                     </tr>
                 </thead>
                 <tbody>
-                    {this.props.task.length >= 0 && this.props.task.slice(0).reverse().map((task, index) => {
+                    {this.props.task.length >= 0 && this.props.task.map((task, index) => {
                         return (
                             <Task
                                 key = {index}

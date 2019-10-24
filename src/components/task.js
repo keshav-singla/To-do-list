@@ -24,7 +24,7 @@ class Task extends React.Component{
                     {this.props.task}
                 </td>
                 <td>
-                    <button onClick = { ()=> this.handleDelete(this.props.key)} >
+                    <button onClick = { ()=> this.handleDelete(this.props.task)} >
                         Delete
                     </button>
                 </td>
