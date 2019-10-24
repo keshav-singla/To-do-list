@@ -1,13 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { deleteTask} from '../actions/addtask';
+import { deleteTask } from '../actions/addtask';
 import { bindActionCreators } from 'redux'
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
+import TableRow from '@material-ui/core/TableRow';
+import TableCell from '@material-ui/core/TableCell';
 
-class Task extends React.Component{
-    constructor(){
+class Task extends React.Component {
+    constructor() {
         super()
-        this.state={
-
+        this.state = {
         }
     }
 
@@ -15,26 +18,28 @@ class Task extends React.Component{
         this.props.deleteTask(delData)
     }
 
-    render(){
+    render() {
         console.log(this.props.task);
         console.log('Hello');
-        return( 
-            <tr>
-                <td>
+        return (
+            <TableRow >
+                <TableCell>
                     {this.props.task}
-                </td>
-                <td>
-                    <button onClick = { ()=> this.handleDelete(this.props.task)} >
-                        Delete
-                    </button>
-                </td>
-            </tr>
+                </TableCell>
+                <TableCell align="right">
+                    <IconButton edge="end" aria-label="delete">
+                        <DeleteIcon
+                            onClick={() => this.handleDelete(this.props.task)}
+                        />
+                    </IconButton>
+                </TableCell>
+            </TableRow>
         )
     }
 }
 
-function mapDispatchToProps (dispatch) {
-    return bindActionCreators({deleteTask}, dispatch)
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({ deleteTask }, dispatch)
 }
 
-export default connect( () => {return {};},mapDispatchToProps)(Task);
+export default connect(() => { return {}; }, mapDispatchToProps)(Task);

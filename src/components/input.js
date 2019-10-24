@@ -5,6 +5,7 @@ import { addTask } from '../actions/addtask';
 import List from './list'
 import { Input } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
 
 
 class Taskbar extends React.Component {
@@ -31,31 +32,31 @@ class Taskbar extends React.Component {
     render() {
         return (
             <div className='container'>
-                <div className='inputContainer'>
+                <Grid container >
+                    <Grid item xs={12} className='inputContainer'>
+                        <Input
+                            className='inputFeild'
+                            type="text"
+                            placeholder='Add Task'
+                            name="input"
+                            value={this.state.input}
+                            onChange={this.handleChange}
+                            autoComplete='off'
+                        />
 
-                    <Input
-                        className='inputFeild'
-                        // fullWidth={true}
-                        type="text"
-                        placeholder='Add Task'
-                        name="input"
-                        value={this.state.input}
-                        onChange={this.handleChange}
-                        autoComplete='off'
-                    />
-
-                    <Button 
-                        variant="contained"
-                        color="primary" 
-                        // className={classes.button}
-                        onClick={() => {this.handleSubmit(this.state.input)}}
-                    >
-                        Add Task
+                        <Button
+                            variant="contained"
+                            color="primary"
+                            onClick={() => { this.handleSubmit(this.state.input) }}
+                            
+                        >
+                            Add Task
                     </Button>
-
-                </div>
-                <List />
+                        <List />
+                    </Grid>
+                </Grid>
             </div>
+
         )
     }
 }
