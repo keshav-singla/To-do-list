@@ -8,7 +8,6 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
-
 class List extends React.Component {
     constructor(props) {
         super(props)
@@ -18,29 +17,28 @@ class List extends React.Component {
     }
 
     render() {
-        console.log(this.props.task);
+        console.log(this.props.task.length);
         return (
             <Paper>
                 <Table>
-                <TableHead>
-                    <TableRow>
-                        <TableCell>Tasks</TableCell>
-                        <TableCell align="Right">Actions</TableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {this.props.task.length >= 0 && this.props.task.map((task, index) => {
-                        return (
-                            <Task
-                                key={index}
-                                task={task}
-                            />
-                        )
-                    })}
-                </TableBody>
-            </Table>
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>Tasks</TableCell>
+                            <TableCell align="Right">Actions</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {this.props.task.length >= 0 && this.props.task.map((task, index) => {
+                            return(
+                                <Task
+                                    key = {index}
+                                    task = {task}
+                                />
+                            )
+                        })}
+                    </TableBody>
+                </Table>
             </Paper>
-            
         )
     }
 }

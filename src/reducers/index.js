@@ -7,13 +7,16 @@ const taskreducer = (state= [] , action) => {
         // THIS CASE WILL ADD TASK
         case 'ADDTASK':
             return state.concat(action.payload);
-        
-        // THIS CASE WILL DELETE A TASK    
+
+        // THIS CASE WILL DELETE A TASK
         case 'DELETETASK':
+            console.log(state);
             console.log(action.payload);
-            
-            state= state.slice();
-            state.splice(action.payload,1);
+            console.log('hello');
+
+            state = state.slice();
+            state = state.filter(x => x !== action.payload);
+            console.log(state)
             return state;
             
         default:

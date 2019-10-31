@@ -8,11 +8,6 @@ import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
 
 class Task extends React.Component {
-    constructor() {
-        super()
-        this.state = {
-        }
-    }
 
     handleDelete = (delData) => {
         this.props.deleteTask(delData)
@@ -20,7 +15,6 @@ class Task extends React.Component {
 
     render() {
         console.log(this.props.task);
-        console.log('Hello');
         return (
             <TableRow >
                 <TableCell>
@@ -29,7 +23,7 @@ class Task extends React.Component {
                 <TableCell align="right">
                     <IconButton edge="end" aria-label="delete">
                         <DeleteIcon
-                            onClick={() => this.handleDelete(this.props.task)}
+                            onClick = {() => this.handleDelete(this.props.task)}
                         />
                     </IconButton>
                 </TableCell>

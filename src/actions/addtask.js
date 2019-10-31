@@ -8,8 +8,10 @@ export const addTask = ( task ) => {
 }
 
 export const deleteTask = ( taskId ) =>{
+    console.log(taskId);
     return{
         type: 'DELETETASK',
         payload : taskId
+        
     };
 }
