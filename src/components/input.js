@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { addTask } from '../actions/addtask';
 import List from './list'
-import { Input, TextField } from '@material-ui/core';
+import { Input } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 
@@ -43,7 +43,7 @@ class Taskbar extends React.Component {
             <div className='container'>
                 <Grid container >
                     <Grid item xs={12} className='inputContainer'>
-                        <TextField
+                        <Input
                             className='inputFeild'
                             type="text"
                             placeholder='Add Task'
@@ -51,7 +51,7 @@ class Taskbar extends React.Component {
                             value={this.state.input}
                             onChange={this.handleChange}
                             inputProps={{
-                                maxLength: 100,
+                                maxLength: 75,
                                 }}
                             autoComplete='off'
                         />
