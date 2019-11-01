@@ -15,3 +15,10 @@ export const deleteTask = ( taskId ) =>{
         
     };
 }
+
+export const checkTask = (task) =>{
+    return{
+        type: 'CHECKTASK',
+        payload: task
+    }
+}

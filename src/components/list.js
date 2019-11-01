@@ -17,7 +17,7 @@ class List extends React.Component {
     }
 
     render() {
-        console.log(this.props.task.length);
+        console.log(this.props.task);
         return (
             <Paper>
                 <Table>

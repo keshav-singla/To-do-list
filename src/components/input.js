@@ -1,18 +1,19 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { addTask } from '../actions/addtask';
+import { addTask, checkTask } from '../actions/addtask';
 import List from './list'
 import { Input } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 
 class Taskbar extends React.Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             input: '',
             item: [],
+            lists: props.lists
         }
     }
 
@@ -29,6 +30,8 @@ class Taskbar extends React.Component {
     }
 
     render() {
+        console.log(this.props.list);
+        
         return (
             <div className='container'>
                 <Grid container >
@@ -42,7 +45,6 @@ class Taskbar extends React.Component {
                             onChange={this.handleChange}
                             autoComplete='off'
                         />
-
                         <Button
                             variant="contained"
                             color="primary"
@@ -54,7 +56,6 @@ class Taskbar extends React.Component {
                     </Grid>
                 </Grid>
             </div>
-
         )
     }
 }
@@ -63,4 +64,9 @@ function mapDisptachToProps(dispatch) {
     return bindActionCreators({ addTask }, dispatch)
 }
 
-export default connect(() => { }, mapDisptachToProps)(Taskbar);
+function mapStateToProps(state){
+    return{
+        list : state.lists
+    }
+}
+export default connect( mapDisptachToProps, mapStateToProps)(Taskbar);
