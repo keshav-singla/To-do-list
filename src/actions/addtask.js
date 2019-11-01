@@ -1,9 +1,10 @@
 // ACTION TO BE PERFORMED ACCORDING TO THEIR TYPE
 
-export const addTask = ( task ) => {
+export const addTask = ( task, allTask ) => {
+    
     return {
         type : 'ADDTASK',
-        payload : task
+        payload: task 
     };
 }
 
@@ -14,3 +15,4 @@ export const deleteTask = ( taskId ) =>{
         payload : taskId
     };
 }
+
