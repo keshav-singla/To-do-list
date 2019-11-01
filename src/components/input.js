@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { addTask, checkTask } from '../actions/addtask';
+import { addTask } from '../actions/addtask';
 import List from './list'
 import { Input } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
@@ -13,7 +13,7 @@ class Taskbar extends React.Component {
         this.state = {
             input: '',
             item: [],
-            lists: props.lists
+            tasks: props.tasks
         }
     }
 
@@ -23,15 +23,24 @@ class Taskbar extends React.Component {
     }
 
     handleSubmit = (data) => {
-        this.props.addTask(data)
-        this.setState({
-            input: []
-        })
+        if (this.props.task.includes(data)) {
+            console.log("same element");
+            this.setState({
+                input: []
+            })
+        }
+        else {
+            this.props.addTask(data)
+            this.setState({
+                input: []
+            })
+        }
+
     }
 
     render() {
-        console.log(this.props.list);
-        
+        console.log(this.props.task);
+
         return (
             <div className='container'>
                 <Grid container >
@@ -45,6 +54,7 @@ class Taskbar extends React.Component {
                             onChange={this.handleChange}
                             autoComplete='off'
                         />
+
                         <Button
                             variant="contained"
                             color="primary"
@@ -64,9 +74,12 @@ function mapDisptachToProps(dispatch) {
     return bindActionCreators({ addTask }, dispatch)
 }
 
-function mapStateToProps(state){
-    return{
-        list : state.lists
+function mapStateToProps(state) {
+    console.log(state.tasks);
+
+    return {
+        task: state.tasks
     }
 }
-export default connect( mapDisptachToProps, mapStateToProps)(Taskbar);
+
+export default connect(mapStateToProps, mapDisptachToProps)(Taskbar);

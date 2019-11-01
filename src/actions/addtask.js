@@ -12,13 +12,5 @@ export const deleteTask = ( taskId ) =>{
     return{
         type: 'DELETETASK',
         payload : taskId
-        
     };
-}
-
-export const checkTask = (task) =>{
-    return{
-        type: 'CHECKTASK',
-        payload: task
-    }
 }
