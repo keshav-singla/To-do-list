@@ -16,11 +16,6 @@ class List extends React.Component {
         }
     }
 
-    // SaveDataToLocalStorage = () => {
-    //     JSON.stringify(this.props.task)
-    //     localStorage.setItem("data", JSON.stringify(this.props.task));
-    // }
-
     render() {
         console.log(this.props.task);
         return (
@@ -28,14 +23,14 @@ class List extends React.Component {
                 <Table>
                     <TableHead>
                         <TableRow>
+                            <TableCell align="left">Status</TableCell>
                             <TableCell>Tasks</TableCell>
-                            <TableCell align="Right">Actions</TableCell>
+                            <TableCell align="right">Actions</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
                         {this.props.task.length >= 0 && this.props.task.map((task, index) => {
                             return (
-                                // () => this.SaveDataToLocalStorage,
                                 <Task
                                     key={index}
                                     task={task}

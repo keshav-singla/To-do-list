@@ -13,7 +13,7 @@ class Taskbar extends React.Component {
         this.state = {
             input: '',
             item: [],
-            tasks: props.tasks
+            error : false
         }
     }
 
@@ -24,8 +24,8 @@ class Taskbar extends React.Component {
 
     handleSubmit = (data) => {
         if (this.props.task.includes(data)) {
-            console.log("same element");
             this.setState({
+                error: true,
                 input: []
             })
         }
@@ -45,14 +45,14 @@ class Taskbar extends React.Component {
                     <Grid item xs={12} className='inputContainer'>
                         <Input
                             className='inputFeild'
-                            type="text"
+                            type='text'
                             placeholder='Add Task'
-                            name="input"
+                            name='input'
                             value={this.state.input}
                             onChange={this.handleChange}
                             inputProps={{
                                 maxLength: 75,
-                                }}
+                            }}
                             autoComplete='off'
                         />
                         
@@ -63,9 +63,14 @@ class Taskbar extends React.Component {
                         >
                             Add Task
                         </Button>
+
                         <List />
                     </Grid>
                 </Grid>
+                { this.state.error === true ?
+                    'This TASK already exist!'
+                    :null
+                }
             </div>
         )
     }

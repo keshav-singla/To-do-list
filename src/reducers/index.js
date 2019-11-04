@@ -11,13 +11,16 @@ const taskreducer = (state= [] , action) => {
             
         // THIS CASE WILL DELETE A TASK
         case 'DELETETASK':
-            // console.log(state);
-            // console.log(action.payload);
-            // console.log('hello');
-            
+
             state = state.slice();
             state = state.filter(x => x !== action.payload);
             console.log(state)
+            return state;
+
+        // THIS CASE WILL CHANGE THE STATUS OF TASK
+        case 'TASKDONE':
+            console.log(action.payload);
+                        
             return state;
 
         default:
