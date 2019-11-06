@@ -21,14 +21,16 @@ class Task extends React.Component {
         this.setState({ 
             ...this.state, checked : {[name]: event.target.checked }
         });
-        
-        if( event.target.checked === true ){
-            trueArray.push(name)
-        }
 
-        else if (event.target.checked === false){
-            trueArray = trueArray.filter( x => x !== name )
-        }
+        this.props.taskDone(name , event.target.checked )
+
+        // if( event.target.checked === true ){
+        //     trueArray.push(name)
+        // }
+
+        // else if (event.target.checked === false){
+        //     trueArray = trueArray.filter( x => x !== name )
+        // }
     };
 
     handleFilter  = (name) => {
@@ -44,6 +46,8 @@ class Task extends React.Component {
     render() {
         console.log(trueArray);
         console.log(trueArray.length);
+        console.log(this.props.taskIndex);
+        
 
         return (
             <TableRow>
@@ -65,11 +69,13 @@ class Task extends React.Component {
                 </TableCell>
 
                 <TableCell align = "right" >
+
                     <IconButton edge="end" aria-label="delete">
                         <DeleteIcon
-                            onClick={() => this.handleDelete(this.props.task)}
+                            onClick={ () => this.handleDelete(this.props.task) }
                         />
                     </IconButton>
+
                 </TableCell>
 
             </TableRow>

@@ -34,7 +34,8 @@ class List extends React.Component {
                         {this.props.task.length >= 0 && this.props.task.map((task, index) => {
                             return (
                                 <Task
-                                    key= {index}
+                                    key={index}
+                                    taskIndex= {index}
                                     task={task}
                                 />
                             )

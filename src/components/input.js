@@ -42,13 +42,15 @@ const data = [
     { title: "Data 5", value: 100, color: "#a1d9ce" },
 ]
 
+let taskId = 1;
+
 
 class Taskbar extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             input: '',
-            item: [],
+            taskArray: [],
             error: false
         }
     }
@@ -59,24 +61,29 @@ class Taskbar extends React.Component {
     }
 
     handleSubmit = (data) => {
-        if (this.props.task.includes(data)) {
+        if (this.props.task.includes(data.task)) {
             this.setState({
                 error: true,
                 input: []
             })
         }
         else {
-            this.props.addTask(data)
+            this.props.addTask(data.task)
             this.setState({
                 error: false,
                 input: []
             })
         }
+        this.state.taskArray.push(data.task)
+        console.log(data);
+        
     }
 
     render() {
+        // console.log(this.state.input);
+        // console.log(this.props.task);
+        console.log(this.state.taskArray);
 
-        console.log(this.props.task);
         return (
             <div className='container'>
                 <Grid container >
@@ -97,7 +104,7 @@ class Taskbar extends React.Component {
                         <Button
                             variant="contained"
                             color="primary"
-                            onClick={() => { this.handleSubmit(this.state.input) }}
+                            onClick={() => { this.handleSubmit({id: taskId++, task : this.state.input}) }}
                         >
                             ADD TASK
                         </Button>
@@ -136,7 +143,6 @@ function mapDisptachToProps(dispatch) {
 }
 
 function mapStateToProps(state) {
-    console.log(state.tasks);
     return {
         task: state.tasks
     }

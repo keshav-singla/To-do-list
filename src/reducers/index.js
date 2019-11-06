@@ -18,10 +18,10 @@ const taskreducer = (state= [] , action) => {
             return state;
 
         // THIS CASE WILL CHANGE THE STATUS OF TASK
-        case 'TASKDONE':
-            console.log(state);
+        // case 'TASKDONE':
+        //     console.log(state);
             
-            return state;
+        //     return state;
             
         default:
             return state;
