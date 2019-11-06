@@ -6,46 +6,65 @@ import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
-import FormGroup from "@material-ui/core/FormGroup";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 
-class Task extends React.Component {
+let trueArray = []
 
-    handleDone = (taskStatus) => {
-        console.log('hello');
-        
-        this.props.taskDone(taskStatus)
+class Task extends React.Component {
+    constructor() {
+        super()
+        this.state = {
+        }
     }
+
+    handleChange = name => event => {
+        this.setState({ 
+            ...this.state, checked : {[name]: event.target.checked }
+        });
+        
+        if( event.target.checked === true ){
+            trueArray.push(name)
+        }
+
+        else if (event.target.checked === false){
+            trueArray = trueArray.filter( x => x !== name )
+        }
+    };
+
+    handleFilter  = (name) => {
+        const { checked } = this.state; 
+        console.log(this.state)
+        console.log(checked);
+    }
+
     handleDelete = (delData) => {
         this.props.deleteTask(delData)
     }
 
     render() {
-        console.log(this.props.taskDone);
+        console.log(trueArray);
+        console.log(trueArray.length);
+
         return (
-            <TableRow >
+            <TableRow>
+
                 <TableCell>
-                    <FormGroup>
-                        <FormControlLabel
-                            control={
-                                <Checkbox
-                                    // checked={state.checkedB}
-                                    onChange={this.handleDone(this.props.task)}
-                                    value="checkedB"
-                                    color="primary"
-                                />
-                            }
-                        // label="Primary"
-                        />
-                    </FormGroup>
+                    <Checkbox
+                        name={this.props.task}
+                        checked={this.state[this.props.task]}
+                        onChange={this.handleChange(`${this.props.task}`)}
+                        value="checked"
+                        inputProps={{
+                            'aria-label': 'primary checkbox',
+                        }}
+                    />
                 </TableCell>
 
                 <TableCell>
                     {this.props.task}
                 </TableCell>
 
-                <TableCell align="right">
+                <TableCell align = "right" >
                     <IconButton edge="end" aria-label="delete">
                         <DeleteIcon
                             onClick={() => this.handleDelete(this.props.task)}
@@ -58,8 +77,16 @@ class Task extends React.Component {
     }
 }
 
+// Dispataching Actions
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({ deleteTask, taskDone }, dispatch)
 }
 
-export default connect(() => { return {}; }, mapDispatchToProps)(Task);
+// Getting state from Redux store
+function mapStateToProps(state) {
+    return {
+        taskArray: state.tasks
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Task);

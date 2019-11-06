@@ -23,16 +23,18 @@ class List extends React.Component {
                 <Table>
                     <TableHead>
                         <TableRow>
-                            <TableCell align="left">Status</TableCell>
-                            <TableCell>Tasks</TableCell>
-                            <TableCell align="right">Actions</TableCell>
+
+                            <TableCell align="left"> Status </TableCell>
+                            <TableCell> Tasks </TableCell>
+                            <TableCell align="right"> Actions </TableCell>
+
                         </TableRow>
                     </TableHead>
                     <TableBody>
                         {this.props.task.length >= 0 && this.props.task.map((task, index) => {
                             return (
                                 <Task
-                                    key={index}
+                                    key= {index}
                                     task={task}
                                 />
                             )
@@ -44,6 +46,7 @@ class List extends React.Component {
     }
 }
 
+// Getting state from Redux store
 function mapStateToProps(state) {
     return {
         task: state.tasks

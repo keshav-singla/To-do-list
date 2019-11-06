@@ -6,6 +6,42 @@ import List from './list'
 import { Input } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
+import ReactSvgPieChart from "react-svg-piechart"
+
+const options = {
+    animationEnabled: true,
+    title: {
+        text: "Customer Satisfaction"
+    },
+    subtitles: [{
+        text: "71% Positive",
+        verticalAlign: "center",
+        fontSize: 24,
+        dockInsidePlotArea: true
+    }],
+    data: [{
+        type: "doughnut",
+        showInLegend: true,
+        indexLabel: "{name}: {y}",
+        yValueFormatString: "#,###'%'",
+        dataPoints: [
+            { name: "Unsatisfied", y: 5 },
+            { name: "Very Unsatisfied", y: 31 },
+            { name: "Very Satisfied", y: 40 },
+            { name: "Satisfied", y: 17 },
+            { name: "Neutral", y: 7 }
+        ]
+    }]
+}
+
+const data = [
+    { title: "Data 1", value: 100, color: "#22594e" },
+    { title: "Data 2", value: 20, color: "#2f7d6d" },
+    { title: "Data 3", value: 80, color: "#3da18d" },
+    { title: "Data 4", value: 60, color: "#69c2b0" },
+    { title: "Data 5", value: 100, color: "#a1d9ce" },
+]
+
 
 class Taskbar extends React.Component {
     constructor(props) {
@@ -13,7 +49,7 @@ class Taskbar extends React.Component {
         this.state = {
             input: '',
             item: [],
-            error : false
+            error: false
         }
     }
 
@@ -32,12 +68,14 @@ class Taskbar extends React.Component {
         else {
             this.props.addTask(data)
             this.setState({
+                error: false,
                 input: []
             })
         }
     }
 
     render() {
+
         console.log(this.props.task);
         return (
             <div className='container'>
@@ -46,7 +84,7 @@ class Taskbar extends React.Component {
                         <Input
                             className='inputFeild'
                             type='text'
-                            placeholder='Add Task'
+                            placeholder='ADD TASK'
                             name='input'
                             value={this.state.input}
                             onChange={this.handleChange}
@@ -55,22 +93,39 @@ class Taskbar extends React.Component {
                             }}
                             autoComplete='off'
                         />
-                        
+
                         <Button
                             variant="contained"
                             color="primary"
                             onClick={() => { this.handleSubmit(this.state.input) }}
                         >
-                            Add Task
+                            ADD TASK
                         </Button>
-
+                        
+                        {/* LIST COMPONENT */}
                         <List />
+
                     </Grid>
                 </Grid>
-                { this.state.error === true ?
-                    'This TASK already exist!'
-                    :null
+
+                {this.state.error === true ?
+                    'This TASK is already exist!'
+                    : null
                 }
+
+                {/* <ReactSvgPieChart
+                    data={data}
+                    // If you need expand on hover (or touch) effect
+                    expandOnHover
+                    // If you need custom behavior when sector is hovered (or touched)
+                    onSectorHover={(d, i, e) => {
+                        if (d) {
+                            console.log("Mouse enter - Index:", i, "Data:", d, "Event:", e)
+                        } else {
+                            console.log("Mouse leave - Index:", i, "Event:", e)
+                        }
+                    }}
+                /> */}
             </div>
         )
     }
