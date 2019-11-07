@@ -1,9 +1,11 @@
 // ACTION TO BE PERFORMED ACCORDING TO THEIR TYPE
 
 export const addTask = ( task ) => {
+    console.log(task);
+    
     return {
         type : 'ADDTASK',
-        payload: task 
+        payload: task   
     };
 }
 

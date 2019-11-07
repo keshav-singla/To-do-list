@@ -6,44 +6,43 @@ import List from './list'
 import { Input } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
-import ReactSvgPieChart from "react-svg-piechart"
+// import ReactSvgPieChart from "react-svg-piechart"
 
-const options = {
-    animationEnabled: true,
-    title: {
-        text: "Customer Satisfaction"
-    },
-    subtitles: [{
-        text: "71% Positive",
-        verticalAlign: "center",
-        fontSize: 24,
-        dockInsidePlotArea: true
-    }],
-    data: [{
-        type: "doughnut",
-        showInLegend: true,
-        indexLabel: "{name}: {y}",
-        yValueFormatString: "#,###'%'",
-        dataPoints: [
-            { name: "Unsatisfied", y: 5 },
-            { name: "Very Unsatisfied", y: 31 },
-            { name: "Very Satisfied", y: 40 },
-            { name: "Satisfied", y: 17 },
-            { name: "Neutral", y: 7 }
-        ]
-    }]
-}
+// const options = {
+//     animationEnabled: true,
+//     title: {
+//         text: "Customer Satisfaction"
+//     },
+//     subtitles: [{
+//         text: "71% Positive",
+//         verticalAlign: "center",
+//         fontSize: 24,
+//         dockInsidePlotArea: true
+//     }],
+//     data: [{
+//         type: "doughnut",
+//         showInLegend: true,
+//         indexLabel: "{name}: {y}",
+//         yValueFormatString: "#,###'%'",
+//         dataPoints: [
+//             { name: "Unsatisfied", y: 5 },
+//             { name: "Very Unsatisfied", y: 31 },
+//             { name: "Very Satisfied", y: 40 },
+//             { name: "Satisfied", y: 17 },
+//             { name: "Neutral", y: 7 }
+//         ]
+//     }]
+// }
 
-const data = [
-    { title: "Data 1", value: 100, color: "#22594e" },
-    { title: "Data 2", value: 20, color: "#2f7d6d" },
-    { title: "Data 3", value: 80, color: "#3da18d" },
-    { title: "Data 4", value: 60, color: "#69c2b0" },
-    { title: "Data 5", value: 100, color: "#a1d9ce" },
-]
+// const data = [
+//     { title: "Data 1", value: 100, color: "#22594e" },
+//     { title: "Data 2", value: 20, color: "#2f7d6d" },
+//     { title: "Data 3", value: 80, color: "#3da18d" },
+//     { title: "Data 4", value: 60, color: "#69c2b0" },
+//     { title: "Data 5", value: 100, color: "#a1d9ce" },
+// ]
 
 let taskId = 1;
-
 
 class Taskbar extends React.Component {
     constructor(props) {
@@ -61,27 +60,26 @@ class Taskbar extends React.Component {
     }
 
     handleSubmit = (data) => {
-        if (this.props.task.includes(data.task)) {
+        if (this.props.task.includes( data.task || data.id )) {
             this.setState({
                 error: true,
                 input: []
             })
+            taskId -- ;
         }
         else {
-            this.props.addTask(data.task)
+            this.props.addTask( data )
             this.setState({
                 error: false,
                 input: []
             })
         }
-        this.state.taskArray.push(data.task)
+        // this.state.taskArray.push(data)
         console.log(data);
-        
     }
 
     render() {
-        // console.log(this.state.input);
-        // console.log(this.props.task);
+        console.log(this.props.task);
         console.log(this.state.taskArray);
 
         return (
@@ -96,7 +94,7 @@ class Taskbar extends React.Component {
                             value={this.state.input}
                             onChange={this.handleChange}
                             inputProps={{
-                                maxLength: 75,
+                                maxLength: 80,
                             }}
                             autoComplete='off'
                         />
@@ -104,7 +102,7 @@ class Taskbar extends React.Component {
                         <Button
                             variant="contained"
                             color="primary"
-                            onClick={() => { this.handleSubmit({id: taskId++, task : this.state.input}) }}
+                            onClick={() => { this.handleSubmit({id: taskId++ , task:this.state.input}) }}
                         >
                             ADD TASK
                         </Button>
@@ -119,11 +117,12 @@ class Taskbar extends React.Component {
                     'This TASK is already exist!'
                     : null
                 }
-
+                
                 {/* <ReactSvgPieChart
                     data={data}
                     // If you need expand on hover (or touch) effect
                     expandOnHover
+                    expandSize
                     // If you need custom behavior when sector is hovered (or touched)
                     onSectorHover={(d, i, e) => {
                         if (d) {
@@ -132,7 +131,8 @@ class Taskbar extends React.Component {
                             console.log("Mouse leave - Index:", i, "Event:", e)
                         }
                     }}
-                /> */}
+                />  */}
+               
             </div>
         )
     }

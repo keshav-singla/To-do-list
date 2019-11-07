@@ -31,12 +31,12 @@ class List extends React.Component {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {this.props.task.length >= 0 && this.props.task.map((task, index) => {
+                        {this.props.task.length >= 0 && this.props.task.map((task , index) => {
                             return (
                                 <Task
-                                    key={index}
-                                    taskIndex= {index}
-                                    task={task}
+                                    key = {index}
+                                    taskIndex = {index}
+                                    task = {task}
                                 />
                             )
                         })}
