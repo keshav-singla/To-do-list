@@ -24,9 +24,9 @@ class List extends React.Component {
                     <TableHead>
                         <TableRow>
 
-                            <TableCell align="left"> Status </TableCell>
-                            <TableCell> Tasks </TableCell>
-                            <TableCell align="right"> Actions </TableCell>
+                            <TableCell align="left"> STATUS </TableCell>
+                            <TableCell> TASKS </TableCell>
+                            <TableCell align="right"> ACTIONS </TableCell>
 
                         </TableRow>
                     </TableHead>

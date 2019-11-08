@@ -4,12 +4,11 @@ const taskreducer = (state= [] , action) => {
     console.log(action);
 
     switch(action.type){
-
         // THIS CASE WILL CHECKTASK and then ADDTASK       
             case 'ADDTASK':
-            console.log(action.payload.task);
+            // return Object.assign({}, state, {task: action.payload} );
             return state.concat(action.payload.task);
-            
+
         // THIS CASE WILL DELETE A TASK
         case 'DELETETASK':
             state = state.slice();
@@ -19,13 +18,13 @@ const taskreducer = (state= [] , action) => {
 
         // THIS CASE WILL CHANGE THE STATUS OF TASK
         // case 'TASKDONE':
-        //     console.log(state);
+        // console.log(state);
+        // return state;
 
-        //     return state;
-            
         default:
             return state;
-    }
+    }            
+
 },
 
 reducers = combineReducers({tasks:taskreducer})

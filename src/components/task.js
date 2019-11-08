@@ -33,12 +33,6 @@ class Task extends React.Component {
         }
     };
 
-    // handleFilter  = (name) => {
-    //     const { checked } = this.state; 
-    //     console.log(this.state)
-    //     console.log(checked);
-    // }
-
     handleDelete = (delData) => {
         this.props.deleteTask(delData)
     }
@@ -47,6 +41,8 @@ class Task extends React.Component {
         console.log(trueArray);
         // console.log(trueArray.length);
         // console.log(this.props.taskIndex);
+        console.log(this.props.task);
+        
 
         return (
             <TableRow>

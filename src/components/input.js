@@ -6,6 +6,7 @@ import List from './list'
 import { Input } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
+
 // import ReactSvgPieChart from "react-svg-piechart"
 
 // const options = {
@@ -67,6 +68,7 @@ class Taskbar extends React.Component {
             })
             taskId -- ;
         }
+
         else {
             this.props.addTask( data )
             this.setState({
@@ -96,13 +98,13 @@ class Taskbar extends React.Component {
                             inputProps={{
                                 maxLength: 80,
                             }}
-                            autoComplete='off'
+                            autoComplete = 'off'
                         />
 
                         <Button
                             variant="contained"
                             color="primary"
-                            onClick={() => { this.handleSubmit({id: taskId++ , task:this.state.input}) }}
+                            onClick={ () => {this.handleSubmit({id: taskId++ , task:this.state.input})} }
                         >
                             ADD TASK
                         </Button>
