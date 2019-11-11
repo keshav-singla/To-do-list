@@ -6,34 +6,7 @@ import List from './list'
 import { Input } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
-
 // import ReactSvgPieChart from "react-svg-piechart"
-
-// const options = {
-//     animationEnabled: true,
-//     title: {
-//         text: "Customer Satisfaction"
-//     },
-//     subtitles: [{
-//         text: "71% Positive",
-//         verticalAlign: "center",
-//         fontSize: 24,
-//         dockInsidePlotArea: true
-//     }],
-//     data: [{
-//         type: "doughnut",
-//         showInLegend: true,
-//         indexLabel: "{name}: {y}",
-//         yValueFormatString: "#,###'%'",
-//         dataPoints: [
-//             { name: "Unsatisfied", y: 5 },
-//             { name: "Very Unsatisfied", y: 31 },
-//             { name: "Very Satisfied", y: 40 },
-//             { name: "Satisfied", y: 17 },
-//             { name: "Neutral", y: 7 }
-//         ]
-//     }]
-// }
 
 // const data = [
 //     { title: "Data 1", value: 100, color: "#22594e" },
@@ -91,7 +64,7 @@ class Taskbar extends React.Component {
                         <Input
                             className='inputFeild'
                             type='text'
-                            placeholder='ADD TASK'
+                            placeholder='Add Task'
                             name='input'
                             value={this.state.input}
                             onChange={this.handleChange}
@@ -104,7 +77,7 @@ class Taskbar extends React.Component {
                         <Button
                             variant="contained"
                             color="primary"
-                            onClick={ () => {this.handleSubmit({id: taskId++ , task:this.state.input})} }
+                            onClick={ () => {this.handleSubmit( {id: taskId++ , task:this.state.input} )} }
                         >
                             ADD TASK
                         </Button>

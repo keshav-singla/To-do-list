@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import { deleteTask, taskDone } from '../actions/addtask';
 import { bindActionCreators } from 'redux'
 import IconButton from '@material-ui/core/IconButton';
-import DeleteIcon from '@material-ui/icons/Delete';
+import DeleteForeverTwoToneIcon from '@material-ui/icons/DeleteForeverTwoTone';
+import EditTwoToneIcon from '@material-ui/icons/EditTwoTone';
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
 import Checkbox from "@material-ui/core/Checkbox";
@@ -14,6 +15,14 @@ class Task extends React.Component {
     constructor() {
         super()
         this.state = {
+            disabled : false,
+        }
+    }
+
+    componentWillReceiveProps = ( nextProps ) => {
+        if(this.props !== nextProps){
+            console.log(nextProps);
+            console.log(this.props);
         }
     }
 
@@ -26,6 +35,9 @@ class Task extends React.Component {
 
         if( event.target.checked === true ){
             trueArray.push(name)
+            this.setState({
+
+            })
         }
 
         else if (event.target.checked === false){
@@ -37,18 +49,21 @@ class Task extends React.Component {
         this.props.deleteTask(delData)
     }
 
+    handleEdit = () => {
+        console.log('Edit Icon');
+    }
+
     render() {
         console.log(trueArray);
         // console.log(trueArray.length);
-        // console.log(this.props.taskIndex);
         console.log(this.props.task);
+        console.log(this.props.taskIndex);
         
-
         return (
             <TableRow>
-
                 <TableCell>
                     <Checkbox
+                        color = 'primary'
                         name={this.props.task}
                         checked={this.state[this.props.task]}
                         onChange={this.handleChange(`${this.props.task}`)}
@@ -63,16 +78,19 @@ class Task extends React.Component {
                     {this.props.task}
                 </TableCell>
 
-                <TableCell align = "right" >
-
+                <TableCell align = 'right' >
                     <IconButton edge="end" aria-label="delete">
-                        <DeleteIcon
-                            onClick={ () => this.handleDelete(this.props.task) }
+                        <EditTwoToneIcon color = 'primary'
+                            onClick = { () => this.handleEdit() } 
                         />
                     </IconButton>
 
+                    <IconButton edge="end" aria-label="delete">
+                        <DeleteForeverTwoToneIcon color = 'secondary'
+                            onClick={ () => this.handleDelete(this.props.task)}
+                        />
+                    </IconButton>
                 </TableCell>
-
             </TableRow>
         )
     }

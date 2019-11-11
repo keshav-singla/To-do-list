@@ -21,15 +21,15 @@ class List extends React.Component {
         return (
             <Paper>
                 <Table>
+
                     <TableHead>
                         <TableRow>
-
                             <TableCell align="left"> STATUS </TableCell>
                             <TableCell> TASKS </TableCell>
                             <TableCell align="right"> ACTIONS </TableCell>
-
                         </TableRow>
                     </TableHead>
+
                     <TableBody>
                         {this.props.task.length >= 0 && this.props.task.map((task , index) => {
                             return (
@@ -41,6 +41,7 @@ class List extends React.Component {
                             )
                         })}
                     </TableBody>
+                    
                 </Table>
             </Paper>
         )
